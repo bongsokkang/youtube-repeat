@@ -59,6 +59,7 @@ class TimeSlider extends React.Component {
 				<Slider
 					range
 					allowCross={false}
+					tipFormatter={null}
 					defaultValue={[0, 100]}
 					onChange={this.onSliderChange} />
 				<span style={endTimeStyle}>{endTime}</span>
