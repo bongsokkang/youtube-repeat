@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TimeSlider from './components/TimeSlider/TimeSlider';
 import ThumbnailList from './components/ThumbnailList/ThumbnailList';
-import './App.css';
 
 class App extends Component {
 	render() {

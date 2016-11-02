@@ -5,13 +5,11 @@ const ThumbnailList = ({ title, thumbnails, onClick }) => {
 	const listStyle = {
 		marginTop: '5px',
 		padding: 0,
-		textAlign: 'left'
 	};
 
 	const itemStyle = {
 		display: 'inline-block',
 		listStyle: 'none',
-		textAlign: 'left'
 	};
 
 	const titleStyle = {
@@ -19,7 +17,6 @@ const ThumbnailList = ({ title, thumbnails, onClick }) => {
 		fontWeight: 500,
 		marginBottom: 0,
 		paddingLeft: '8px',
-		textAlign: 'left'
 	};
 
 	const thumbnailList = thumbnails.map((thumbnail) => (

@@ -18,7 +18,6 @@ const Thumbnail = ({ id, img, title, author, onClick }) => {
 		fontWeight: '500',
 		marginTop: 0,
 		marginBottom: 0,
-		textAlign: 'left'
 	};
 
 	const authorStyle = {
@@ -26,7 +25,6 @@ const Thumbnail = ({ id, img, title, author, onClick }) => {
 		fontSize: '11px',
 		fontWeight: '400',
 		marginTop: '3px',
-		textAlign: 'left'
 	};
 
 	return (
