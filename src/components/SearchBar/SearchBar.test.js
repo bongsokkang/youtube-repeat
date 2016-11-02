@@ -5,18 +5,18 @@ import SearchBar from './SearchBar';
 describe('SearchBar', () => {
 	it('should render a text box and button', () => {
 		const wrapper = shallow(
-			<SearchBar onClick={() => {}} />
+			<SearchBar onSearch={() => {}} />
 		);
 
 		expect(wrapper.find('input[type="text"]').length).toEqual(1);
 		expect(wrapper.find('button').length).toEqual(1);
 	});
 
-	it('should call props.onClick when button is clicked', () => {
+	it('should call props.onSearch when button is clicked', () => {
 		let cbInvoked = false;
 		const cb = (text) => cbInvoked = text;
 		const wrapper = shallow(
-			<SearchBar onClick={cb} />
+			<SearchBar onSearch={cb} />
 		);
 
 		const input = wrapper.find('input');
@@ -28,11 +28,11 @@ describe('SearchBar', () => {
 		expect(cbInvoked).toEqual('hello world');
 	});
 
-	it('should call props.onClick when enter key is pressed inside text box', () => {
+	it('should call props.onSearch when enter key is pressed inside text box', () => {
 		let cbInvoked = false;
 		const cb = (text) => cbInvoked = text;
 		const wrapper = shallow(
-			<SearchBar onClick={cb} />
+			<SearchBar onSearch={cb} />
 		);
 
 		const input = wrapper.find('input');

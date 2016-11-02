@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TimeSlider from './components/TimeSlider/TimeSlider';
 import ThumbnailList from './components/ThumbnailList/ThumbnailList';
-import SearchBar from './components/SearchBar/SearchBar';
+import Header from './components/Header/Header';
 
 class App extends Component {
 	render() {
@@ -14,7 +14,7 @@ class App extends Component {
 
 		return (
 			<div className="App">
-				<SearchBar onClick={(value) => console.log(value)}/>
+				<Header searchVideo={(text) => console.log(text)} />
 				<TimeSlider
 					videoLength={602100}
 					onSliderChange={(start, end) => console.log(`${start}, ${end}`)} />

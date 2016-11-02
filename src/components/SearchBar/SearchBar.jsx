@@ -30,21 +30,21 @@ class SearchBar extends React.Component {
 	}
 
 	handleSubmit() {
-		this.props.onClick(this.state.text);
+		this.props.onSearch(this.state.text);
 	}
 
 	render() {
 		const containerStyle = {
 			height: '27px',
-			marginTop: '8px'
 		};
 
 		const inputStyle = {
 			border: '1px solid #d3d3d3',
 			fontSize: '16px',
 			height: '27px',
+			outline: 'none',
 			padding: '2px 6px',
-			width: '220px'
+			width: '300px'
 		};
 
 		const buttonStyle = {
@@ -52,6 +52,7 @@ class SearchBar extends React.Component {
 			border: '1px solid #d3d3d3',
 			borderLeft: 'none',
 			height: '27px',
+			outline: 'none',
 			position: 'absolute'
 		};
 
@@ -75,7 +76,7 @@ class SearchBar extends React.Component {
 };
 
 SearchBar.propTypes = {
-	onClick: PropTypes.func.isRequired
+	onSearch: PropTypes.func.isRequired
 };
 
 export default SearchBar;
