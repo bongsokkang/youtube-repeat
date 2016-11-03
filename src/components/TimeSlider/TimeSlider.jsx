@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Slider from 'rc-slider';
-import Utility from '../../Utility/Utility';
+import Utility from '../../utility/Utility';
 require('rc-slider/assets/index.css');
 
 class TimeSlider extends React.Component {
