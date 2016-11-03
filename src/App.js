@@ -3,6 +3,7 @@ import Header from './components/Header/Header';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import ThumbnailList from './components/ThumbnailList/ThumbnailList';
 import SearchResultList from './components/SearchResultList/SearchResultList';
+import FavoritesList from './components/FavoritesList/FavoritesList';
 
 class App extends Component {
 	render() {
@@ -30,6 +31,9 @@ class App extends Component {
 					onSliderChange={printSlider} />
 				<SearchResultList
 					thumbnails={thumbnailList}
+					onClick={(id) => console.log(id)} />
+				<FavoritesList
+					thumbnails={thumbnailList.slice(0, 6)}
 					onClick={(id) => console.log(id)} />
 			</div>
 		);
