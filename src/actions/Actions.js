@@ -1,3 +1,5 @@
+import youtubeData from '../utility/YoutubeData';
+
 export const ADD_SEARCH_RESULTS = 'ADD_SEARCH_RESULTS';
 export const ADD_CURRENT_VIDEO = 'ADD_CURRENT_VIDEO';
 export const ADD_FAVORITES = 'ADD_FAVORITES';
@@ -22,3 +24,15 @@ export function addFavorites(favorites) {
 		data: favorites
 	};
 };
+
+export function getSearchResults(searchTerm) {
+	return (dispatch) => {
+		return youtubeData.loadClient()
+			.then(() => {
+				return youtubeData.search(searchTerm);
+			})
+			.then((searchResults) => {
+				dispatch(addSearchResults(searchResults));
+			});
+	};
+}

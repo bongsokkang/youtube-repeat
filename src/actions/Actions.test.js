@@ -1,8 +1,10 @@
 import {
 	addSearchResults,
 	addCurrentVideo,
-	addFavorites
+	addFavorites,
+	getSearchResults
 } from './Actions';
+import configureMockStore from 'redux-mock-store';
 
 describe('Action Creators', () => {
 	test('addSearchResults() should create action with appropriate type', () => {
@@ -25,4 +27,35 @@ describe('Action Creators', () => {
 			data: 'foo'
 		});
 	});
+
+	test('creates ADD_SEARCH_RESULTS when Youtube search has completed', () => {
+		mockYoutubeData();
+		let cbInvoked = false;
+		const cb = (result) => invoked = result;
+
+		const expectedAction = [
+			{ type: 'ADD_SEARCH_RESULTS', data: ['abc'] }
+		];
+
+		getSearchResults('abc')(cb).then((a) => {
+			expect(invoked).toEqual(expectedAction);
+		});
+	});
 });
+
+function mockYoutubeData() {
+	jest.mock('../utility/YoutubeData', () => {
+		return {
+			loadClient: jest.fn(() => {
+				return new Promise((resolve) => {
+					resolve('abc');
+				});
+			}),
+			search: jest.fn(() => {
+				return new Promise((resolve) => {
+					resolve(['abc']);
+				});
+			})
+		};
+	});
+}
