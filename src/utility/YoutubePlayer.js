@@ -3,7 +3,7 @@ const youtubePlayer = (function() {
 
 	const loadClient = () => {
 		window.onYouTubeIframeAPIReady = () => {
-			player = new YT.Player('player', {
+			player = new YT.Player('player', { // eslint-disable-line no-undef
 				height: '390',
 				width: '640'
 			});
@@ -14,7 +14,7 @@ const youtubePlayer = (function() {
 		loadIframeAPIScript();
 	};
 
-	const loopSong = (e) => {
+	function loopSong(e) {
 		const videoHasEnded = (e.data === 0);
 
 		if(videoHasEnded) {
@@ -23,7 +23,7 @@ const youtubePlayer = (function() {
 		}
 	};
 
-	const loadIframeAPIScript = () => {
+	function loadIframeAPIScript() {
 		const tag = document.createElement('script');
 		tag.src = 'https://www.youtube.com/iframe_api';
 		const firstScriptTag = document.getElementsByTagName('script')[0];

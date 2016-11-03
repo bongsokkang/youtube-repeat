@@ -31,7 +31,7 @@ class TimeSlider extends React.Component {
 			marginTop: '8px',
 			paddingTop: '17px',
 			position: 'relative',
-			width: '400px'
+			width: '628px'
 		};
 
 		const startTimeStyle = {

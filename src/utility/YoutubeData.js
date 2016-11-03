@@ -3,9 +3,11 @@ const youtubeData = (function() {
 
 	const loadClient = () => {
 		const p1 = new Promise((resolve, reject) => {
+			/* eslint-disable no-undef */
 			gapi.load('client', function() {
 				gapi.client.load('youtube', 'v3', function() {
 					gapi.client.setApiKey(API_KEY);
+					/* eslint-enable no-undef */
 					resolve('Success');
 				});
 			});
@@ -15,7 +17,7 @@ const youtubeData = (function() {
 	};
 
 	const search = (searchTerm) => {
-		const request = gapi.client.youtube.search.list({
+		const request = gapi.client.youtube.search.list({ // eslint-disable-line no-undef
 			part: 'snippet',
 			q: searchTerm,
 			type: 'video',
@@ -31,7 +33,7 @@ const youtubeData = (function() {
 		return p1;
 	};
 
-	const formatSearchResults = (searchResult) => {
+	function formatSearchResults(searchResult) {
 		const searchResultArray = [];
 
 		for(let i = 0; i < searchResult['items'].length; i++) {
@@ -41,7 +43,7 @@ const youtubeData = (function() {
 				id: currentSearch['id']['videoId'],
 				title: currentSearch['snippet']['title'],
 				author: currentSearch['snippet']['channelTitle'],
-				thumbnail: currentSearch['snippet']['thumbnails']['default']['url']
+				img: currentSearch['snippet']['thumbnails']['medium']['url']
 			};
 
 			searchResultArray.push(currentSearchItem);
