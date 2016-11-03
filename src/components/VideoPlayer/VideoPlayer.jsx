@@ -3,8 +3,12 @@ import Video from '../Video/Video';
 import TimeSlider from '../TimeSlider/TimeSlider';
 
 const VideoPlayer = ({ videoId, videoLength, onSliderChange }) => {
+	const containerStyle = {
+		display: 'inline-block'
+	};
+
 	return (
-		<div>
+		<div style={containerStyle}>
 			<Video videoId={videoId} />
 			<TimeSlider
 				videoLength={videoLength}

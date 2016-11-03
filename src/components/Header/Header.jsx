@@ -5,6 +5,7 @@ import Logo from './youtube.jpg';
 const Header = ({ searchVideo }) => {
 	const containerStyle = {
 		alignItems: 'center',
+		background: 'white',
 		borderBottom: '1px solid #e8e8e8',
 		display: 'flex',
 		height: '50px',
