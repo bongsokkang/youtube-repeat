@@ -58,6 +58,14 @@ class TimeSlider extends React.Component {
 			top: 0
 		};
 
+		const descriptionStyle = {
+			color: '#767676',
+			fontSize: '11px',
+			fontWeight: '400',
+			fontStyle: 'italic',
+			textAlign: 'center'
+		};
+
 		const startTime = Utility.milliToMins(this.state.start);
 		const endTime = Utility.milliToMins(this.state.end);
 
@@ -67,10 +75,11 @@ class TimeSlider extends React.Component {
 				<Slider
 					range
 					allowCross={false}
-					tipFormatter={null}
+					tipFormatter={() => 'Drag handle to set loop time of video'}
 					defaultValue={[0, 100]}
 					onChange={this.onSliderChange} />
 				<span style={endTimeStyle}>{endTime}</span>
+				<p style={descriptionStyle}>Set start and end of loop</p>
 			</div>
 		);
 	}
