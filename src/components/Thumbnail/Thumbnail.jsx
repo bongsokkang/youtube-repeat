@@ -3,13 +3,14 @@ import React, { PropTypes } from 'react';
 const Thumbnail = ({ id, img, title, author, onClick }) => {
 	const containerStyle = {
 		backgroundColor: 'white',
-		display: 'inline-block',
-		margin: '8px'
+		margin: '8px',
+		overflow: 'hidden',
+		width: '300px'
 	};
 
 	const imgStyle = {
-		height: '100px',
-		width: '196px'
+		height: '168px',
+		width: '300px'
 	};
 
 	const titleStyle = {
@@ -18,6 +19,10 @@ const Thumbnail = ({ id, img, title, author, onClick }) => {
 		fontWeight: '500',
 		marginTop: 0,
 		marginBottom: 0,
+		overflow: 'hidden',
+		textOverflow: 'ellipsis',
+		whiteSpace: 'nowrap',
+		width: '300px'
 	};
 
 	const authorStyle = {

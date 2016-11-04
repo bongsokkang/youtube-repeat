@@ -4,8 +4,10 @@ import TimeSlider from '../TimeSlider/TimeSlider';
 
 const VideoPlayer = ({ videoId, videoLength, onSliderChange }) => {
 	const containerStyle = {
+		backgroundColor: 'white',
 		display: 'inline-block',
-		paddingLeft: '15px'
+		float: 'left',
+		padding: '12px 15px 20px 15px'
 	};
 
 	return (

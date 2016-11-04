@@ -4,11 +4,12 @@ import ThumbnailList from '../ThumbnailList/ThumbnailList';
 const SearchResultList = ({ thumbnails, onClick }) => {
 	const containerStyle = {
 		background: 'white',
-		float: 'right',
+		display: 'inline-block',
 		height: '100vh',
 		overflow: 'scroll',
+		marginLeft: '20px',
 		paddingLeft: '10px',
-		width: '250px'
+		width: '650px'
 	};
 
 	return (
