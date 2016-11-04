@@ -58,4 +58,17 @@ describe('TimeSlider', () => {
 		expect(startTime.text()).toEqual('1:00');
 		expect(endTime.text()).toEqual('5:00');
 	});
+
+	it('should update end time only if video length received is not 0', () => {
+		const wrapper = shallow(
+			<TimeSlider
+				videoLength={600000}
+				onSliderChange={() => {}} />
+		);
+		wrapper.setProps({ videoLength: 0 });
+
+		expect(wrapper.state().end).toEqual(600000);
+		const endTime = wrapper.find('span').at(1);
+		expect(endTime.text()).toEqual('10:00');
+	});
 });
