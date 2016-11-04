@@ -13,9 +13,11 @@ const Header = ({ searchVideo }) => {
 	};
 
 	const titleStyle = {
+		color: '#e62117',
+		fontFamily: 'Rock Salt',
 		fontSize: '21px',
-		fontWeight: 500,
 		height: '100%',
+		letterSpacing: '2px',
 		margin: '0 30px 0 0',
 		position: 'relative',
 		top: '-10px'
