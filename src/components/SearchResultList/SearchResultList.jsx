@@ -12,10 +12,14 @@ const SearchResultList = ({ thumbnails, onClick }) => {
 		width: '650px'
 	};
 
+	const title = thumbnails.length > 0 ?
+		`Search Results (${thumbnails.length} results)` :
+		`No search results`;
+
 	return (
 		<div style={containerStyle}>
 			<ThumbnailList
-				title="Search Results"
+				title={title}
 				thumbnails={thumbnails}
 				onClick={onClick} />
 		</div>
