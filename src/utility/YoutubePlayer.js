@@ -1,5 +1,8 @@
 const youtubePlayer = (function() {
 	let player;
+	let ENDED = 0;
+	let PLAYING = 1;
+	let callback;
 
 	const loadClient = () => {
 		window.onYouTubeIframeAPIReady = () => {
@@ -15,11 +18,15 @@ const youtubePlayer = (function() {
 	};
 
 	function loopSong(e) {
-		const videoHasEnded = (e.data === 0);
-
+		const videoHasEnded = (e.data === ENDED);
 		if(videoHasEnded) {
 			player.seekTo(0, true);
 			player.playVideo();
+		}
+
+		const videoIsPlaying = (e.data === PLAYING);
+		if(videoIsPlaying) {
+			callback(player.getDuration());
 		}
 	};
 
@@ -30,13 +37,14 @@ const youtubePlayer = (function() {
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	};
 
-	const loadVideo = (videoId) => {
+	const loadVideo = (videoId, cb) => {
 		if(player) {
 			player.loadVideoById({
 				videoId: videoId
 			});
 			player.playVideo();
 		}
+		callback = cb;
 	};
 
 	return {

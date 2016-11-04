@@ -1,11 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addVideoLength } from '../actions/Actions';
 import YoutubePlayer from '../utility/YoutubePlayer';
 import VideoPlayer from '../components/VideoPlayer/VideoPlayer';
 
 const mapStateToProps = (state) => {
 	return {
-		videoId: state.videoId
+		videoId: state.videoId,
+		videoLength: state.videoLength
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onSliderChange: (start, end) => {
+			YoutubePlayer.updateLoopTime(start, end);
+		},
+		onVideoLoad: (videoLength) => {
+			dispatch(addVideoLength(videoLength));
+		}
 	};
 };
 
@@ -16,7 +29,9 @@ class VideoContainer extends React.Component {
 
 	componentDidUpdate() {
 		if(this.props.videoId !== '') {
-			YoutubePlayer.loadVideo(this.props.videoId);
+			YoutubePlayer.loadVideo(this.props.videoId, (videoLength) => {
+				this.props.onVideoLoad(videoLength);
+			});
 		}
 	}
 
@@ -25,12 +40,13 @@ class VideoContainer extends React.Component {
 		return (
 			<VideoPlayer
 				videoId={this.props.videoId}
-				videoLength={602100}
+				videoLength={this.props.videoLength}
 				onSliderChange={cb} />
 		);
 	}
 };
 
 export default connect(
-	mapStateToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(VideoContainer);

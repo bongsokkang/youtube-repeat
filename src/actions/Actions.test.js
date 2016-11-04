@@ -2,7 +2,8 @@ import {
 	addSearchResults,
 	addCurrentVideo,
 	addFavorites,
-	getSearchResults
+	getSearchResults,
+	addVideoLength
 } from './Actions';
 import configureMockStore from 'redux-mock-store';
 
@@ -24,6 +25,13 @@ describe('Action Creators', () => {
 	test('addFavorites() should create action with appropriate type', () => {
 		expect(addFavorites('foo')).toEqual({
 			type: 'ADD_FAVORITES',
+			data: 'foo'
+		});
+	});
+
+	test('addVideoLength() should create action with appropriate type', () => {
+		expect(addVideoLength('foo')).toEqual({
+			type: 'ADD_VIDEO_LENGTH',
 			data: 'foo'
 		});
 	});

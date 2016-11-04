@@ -15,6 +15,14 @@ class TimeSlider extends React.Component {
 		this.onSliderChange = this.onSliderChange.bind(this);
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.videoLength !== 0) {
+			this.setState({
+				end: nextProps.videoLength
+			});
+		}
+	}
+
 	onSliderChange(values) {
 		const { videoLength } = this.props;
 		this.setState({
