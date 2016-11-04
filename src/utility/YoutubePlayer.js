@@ -1,8 +1,11 @@
 const youtubePlayer = (function() {
 	let player;
-	let ENDED = 0;
-	let PLAYING = 1;
+
 	let callback;
+
+	let startTime = 0; // when loop will start playing
+	let endTime = 0; // when loop will stop playing
+	let currentVideoId;
 
 	const loadClient = () => {
 		window.onYouTubeIframeAPIReady = () => {
@@ -11,24 +14,27 @@ const youtubePlayer = (function() {
 				width: '640'
 			});
 
-			player.addEventListener('onStateChange', loopSong);
+			player.addEventListener('onStateChange', handleVideo);
 		};
 
 		loadIframeAPIScript();
 	};
 
-	function loopSong(e) {
-		const videoHasEnded = (e.data === ENDED);
-		if(videoHasEnded) {
-			player.seekTo(0, true);
-			player.playVideo();
-		}
-
-		const videoIsPlaying = (e.data === PLAYING);
-		if(videoIsPlaying) {
+	function handleVideo(e) {
+		if(videoHasEnded(e)) {
+			loadVideo();
+		} else if(videoStartedPlaying(e)) {
 			callback(player.getDuration());
 		}
 	};
+
+	function videoHasEnded(e) {
+		return e.data === 0;
+	}
+
+	function videoStartedPlaying(e) {
+		return e.data === 1;
+	}
 
 	function loadIframeAPIScript() {
 		const tag = document.createElement('script');
@@ -37,19 +43,50 @@ const youtubePlayer = (function() {
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	};
 
-	const loadVideo = (videoId, cb) => {
-		if(player) {
-			player.loadVideoById({
-				videoId: videoId
-			});
-			player.playVideo();
+	function loadVideo(videoId, cb) {
+		if(!player) {
+			throw new Error('YoutubePlayer: call loadClient first');
 		}
-		callback = cb;
+
+		if(newVideoLoaded(videoId)) {
+			currentVideoId = videoId;
+			startTime = 0;
+			endTime = 0;
+		}
+
+		player.loadVideoById(getVideoPlayerOptions());
+
+		if(cb) {
+			callback = cb;
+		}
+	};
+
+	function newVideoLoaded(videoId) {
+		return videoId && (videoId !== currentVideoId);
+	}
+
+	function getVideoPlayerOptions() {
+		const options = {
+			videoId: currentVideoId,
+			startSeconds: startTime
+		};
+
+		if(endTime !== 0) {
+			options.endSeconds = endTime;
+		}
+
+		return options;
+	}
+
+	const updateLoopTime = (start, end) => {
+		startTime = (start / 100) * player.getDuration();
+		endTime = (end / 100) * player.getDuration();
 	};
 
 	return {
 		loadClient,
-		loadVideo
+		loadVideo,
+		updateLoopTime
 	};
 })();
 

@@ -36,12 +36,13 @@ class VideoContainer extends React.Component {
 	}
 
 	render() {
-		const cb = (start, end) => console.log(`${start}, ${end}`);
+		const { videoId, videoLength, onSliderChange } = this.props;
+
 		return (
 			<VideoPlayer
-				videoId={this.props.videoId}
-				videoLength={this.props.videoLength}
-				onSliderChange={cb} />
+				videoId={videoId}
+				videoLength={videoLength}
+				onSliderChange={onSliderChange} />
 		);
 	}
 };
