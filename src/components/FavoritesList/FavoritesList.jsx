@@ -4,8 +4,7 @@ import ThumbnailList from '../ThumbnailList/ThumbnailList';
 const FavoritesList = ({ thumbnails, onClick }) => {
 	const containerStyle = {
 		background: 'white',
-		padding: '5px 0 0 10px',
-		width: '655px'
+		padding: '5px 0 0 10px'
 	};
 
 	return (
