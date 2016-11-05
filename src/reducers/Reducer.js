@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
-import videoId from './VideoId';
+import currentVideo from './CurrentVideo';
 import searchResults from './SearchResults';
 import favorites from './Favorites';
-import videoLength from './VideoLength';
 
 export default combineReducers({
-	videoId,
+	currentVideo,
 	searchResults,
 	favorites,
-	videoLength
 });
