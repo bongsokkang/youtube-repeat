@@ -3,6 +3,7 @@ import youtubeData from '../utility/YoutubeData';
 export const ADD_SEARCH_RESULTS = 'ADD_SEARCH_RESULTS';
 export const ADD_CURRENT_VIDEO = 'ADD_CURRENT_VIDEO';
 export const ADD_FAVORITES = 'ADD_FAVORITES';
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
 export const ADD_VIDEO_LENGTH = 'ADD_VIDEO_LENGTH';
 
 export function addSearchResults(searchResults) {
@@ -23,6 +24,13 @@ export function addFavorites(favorites) {
 	return {
 		type: ADD_FAVORITES,
 		data: favorites
+	};
+};
+
+export function removeFavorite(favorite) {
+	return {
+		type: REMOVE_FAVORITE,
+		data: favorite
 	};
 };
 

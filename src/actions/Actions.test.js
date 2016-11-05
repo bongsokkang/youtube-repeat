@@ -2,6 +2,7 @@ import {
 	addSearchResults,
 	addCurrentVideo,
 	addFavorites,
+	removeFavorite,
 	getSearchResults,
 	addVideoLength
 } from './Actions';
@@ -25,6 +26,13 @@ describe('Action Creators', () => {
 	test('addFavorites() should create action with appropriate type', () => {
 		expect(addFavorites('foo')).toEqual({
 			type: 'ADD_FAVORITES',
+			data: 'foo'
+		});
+	});
+
+	test('removeFavorite() should create action with appropriate type', () => {
+		expect(removeFavorite('foo')).toEqual({
+			type: 'REMOVE_FAVORITE',
 			data: 'foo'
 		});
 	});

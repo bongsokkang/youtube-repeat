@@ -14,6 +14,8 @@ class App extends Component {
 
 		return (
 			<div>
+				<HeaderContainer />
+				<VideoPlayerContainer />
 				<LikeButton
 					id={'abc'}
 					title={'Title'}
@@ -21,13 +23,9 @@ class App extends Component {
 					img={'img'}
 					likeVideo={likeVideo}
 					dislikeVideo={dislikeVideo} />
-			</div>
-			/*
-				<HeaderContainer />
-				<VideoPlayerContainer />
 				<SearchResultListContainer />
 				<FavoritesListContainer />
-			*/
+			</div>
 		);
 	}
 }
