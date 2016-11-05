@@ -15,8 +15,8 @@ const mapDispatchToProps = (dispatch) => {
 		addFavorites: (favorites) => {
 			dispatch(addFavorites(favorites));
 		},
-		onClick: (videoId) => {
-			dispatch(addCurrentVideo(videoId));
+		onClick: (video) => {
+			dispatch(addCurrentVideo(video));
 		}
 	};
 };

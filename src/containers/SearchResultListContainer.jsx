@@ -10,8 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onClick: (videoId) => {
-			dispatch(addCurrentVideo(videoId));
+		onClick: (video) => {
+			dispatch(addCurrentVideo(video));
 		}
 	};
 };

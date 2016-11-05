@@ -1,13 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addVideoLength } from '../actions/Actions';
+import {
+	addVideoLength,
+	addFavorites,
+	removeFavorite
+} from '../actions/Actions';
 import YoutubePlayer from '../utility/YoutubePlayer';
 import VideoPlayer from '../components/VideoPlayer/VideoPlayer';
 
 const mapStateToProps = (state) => {
 	return {
-		videoId: state.videoId,
-		videoLength: state.videoLength
+		videoId: state.currentVideo.id,
+		videoLength: state.currentVideo.videoLength,
+		title: state.currentVideo.title,
+		author: state.currentVideo.author,
+		img: state.currentVideo.img
 	};
 };
 
@@ -18,6 +25,12 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		onVideoLoad: (videoLength) => {
 			dispatch(addVideoLength(videoLength));
+		},
+		likeVideo: (video) => {
+			dispatch(addFavorites(video));
+		},
+		dislikeVideo: (videoId) => {
+			dispatch(removeFavorite(videoId));
 		}
 	};
 };
@@ -36,13 +49,9 @@ class VideoContainer extends React.Component {
 	}
 
 	render() {
-		const { videoId, videoLength, onSliderChange } = this.props;
-
 		return (
 			<VideoPlayer
-				videoId={videoId}
-				videoLength={videoLength}
-				onSliderChange={onSliderChange} />
+				{...this.props} />
 		);
 	}
 };

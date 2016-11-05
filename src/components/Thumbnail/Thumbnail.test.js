@@ -37,9 +37,9 @@ describe('Thumbnail', () => {
 		expect(author.text()).toEqual('Owner');
 	});
 
-	it('should run callback with ID when thumbnail is clicked', () => {
+	it('should run callback with video info when thumbnail is clicked', () => {
 		let cbInvoked = false;
-		const cb = (id) => cbInvoked = id;
+		const cb = (video) => cbInvoked = video;
 
 		const wrapper = shallow(
 			<Thumbnail
@@ -51,6 +51,11 @@ describe('Thumbnail', () => {
 		);
 
 		wrapper.simulate('click');
-		expect(cbInvoked).toEqual('abc');
+		expect(cbInvoked).toEqual({
+			id: 'abc',
+			img: 'puppy.jpg',
+			title: 'Puppy',
+			author: 'Owner'
+		});
 	});
 });

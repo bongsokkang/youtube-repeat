@@ -40,6 +40,7 @@ class LikeButton extends React.Component {
 		const containerStyle = {
 			color: this.state.liked ? 'red' : 'gray',
 			cursor: 'pointer',
+			fontSize: '25px',
 			userSelect: 'none'
 		};
 

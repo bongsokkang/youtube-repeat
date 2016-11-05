@@ -35,7 +35,7 @@ const Thumbnail = ({ id, img, title, author, onClick }) => {
 	return (
 		<div
 			style={containerStyle}
-			onClick={() => { onClick(id) }}>
+			onClick={() => { onClick({ id, img, title, author }) }}>
 			<img
 				style={imgStyle}
 				src={img}
