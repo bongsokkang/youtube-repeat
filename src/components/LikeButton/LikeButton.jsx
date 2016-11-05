@@ -12,6 +12,8 @@ class LikeButton extends React.Component {
 	}
 
 	toggleLike() {
+		if(!this.props.id) return;
+
 		if(this.state.liked) {
 			this.dislikeVideo();
 		} else {

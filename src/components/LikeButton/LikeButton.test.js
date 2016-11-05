@@ -72,4 +72,21 @@ describe('LikeButton', () => {
 		wrapper.simulate('click');
 		expect(likeInvoked).toEqual('VideoId VideoImg VideoTitle VideoAuthor');
 	});
+
+	it('should not call dislikeVideo or likeVideo if no videoId is provided', () => {
+		let cbInvoked = false;
+		const cb = () => cbInvoked = true;
+		const wrapper = shallow(
+			<LikeButton
+				id=""
+				img="VideoImg"
+				title="VideoTitle"
+				author="VideoAuthor"
+				likeVideo={cb}
+				dislikeVideo={cb} />
+		);
+
+		wrapper.simulate('click');
+		expect(cbInvoked).toEqual(false);
+	});
 });
