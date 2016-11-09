@@ -71,4 +71,21 @@ describe('TimeSlider', () => {
 		const endTime = wrapper.find('span').at(1);
 		expect(endTime.text()).toEqual('10:00');
 	});
+
+	it('should reset the Slider handle values to 0 and 100 when a new video length is provided', () => {
+		const wrapper = shallow(
+			<TimeSlider
+				videoLength={600000}
+				onSliderChange={() => {}} />
+		);
+
+		expect(wrapper.state().sliderValue).toEqual([0, 100]);
+
+		const slider = wrapper.find('Slider');
+		slider.simulate('change', [10, 50]);
+		expect(wrapper.state().sliderValue).toEqual([10, 50]);
+
+		wrapper.setProps({ videoLength: 650000 });
+		expect(wrapper.state().sliderValue).toEqual([0, 100]);
+	});
 });

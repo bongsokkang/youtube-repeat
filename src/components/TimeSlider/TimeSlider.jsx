@@ -9,25 +9,34 @@ class TimeSlider extends React.Component {
 
 		this.state = {
 			start: 0,
-			end: props.videoLength
+			end: props.videoLength,
+			sliderValue: [0, 100]
 		};
 
 		this.onSliderChange = this.onSliderChange.bind(this);
+		this.resetTimeSlider = this.resetTimeSlider.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.videoLength !== 0) {
-			this.setState({
-				end: nextProps.videoLength
-			});
+			this.resetTimeSlider(nextProps.videoLength);
 		}
+	}
+
+	resetTimeSlider(videoLength) {
+		this.setState({
+			start: 0,
+			end: videoLength,
+			sliderValue: [0, 100]
+		});
 	}
 
 	onSliderChange(values) {
 		const { videoLength } = this.props;
 		this.setState({
 			start: Utility.percentOf(videoLength, values[0]),
-			end: Utility.percentOf(videoLength, values[1])
+			end: Utility.percentOf(videoLength, values[1]),
+			sliderValue: values
 		});
 
 		this.props.onSliderChange(values[0], values[1]);
@@ -76,7 +85,7 @@ class TimeSlider extends React.Component {
 					range
 					allowCross={false}
 					tipFormatter={() => 'Drag handle to set loop time of video'}
-					defaultValue={[0, 100]}
+					value={this.state.sliderValue}
 					onChange={this.onSliderChange} />
 				<span style={endTimeStyle}>{endTime}</span>
 				<p style={descriptionStyle}>Set start and end of loop</p>
