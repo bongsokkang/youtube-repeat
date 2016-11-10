@@ -13,7 +13,7 @@ class LikeButton extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.id !== this.props.id) {
-			this.setState({ liked: false });
+			this.setState({ liked: nextProps.isLiked });
 		}
 	}
 
@@ -70,7 +70,8 @@ LikeButton.propTypes = {
 	title: PropTypes.string.isRequired,
 	author: PropTypes.string.isRequired,
 	likeVideo: PropTypes.func.isRequired,
-	dislikeVideo: PropTypes.func.isRequired
+	dislikeVideo: PropTypes.func.isRequired,
+	isLiked: PropTypes.bool.isRequired
 };
 
 export default LikeButton;

@@ -4,7 +4,7 @@ import TimeSlider from '../TimeSlider/TimeSlider';
 import LikeButton from '../LikeButton/LikeButton';
 
 const VideoPlayer = (props) => {
-	const { videoId, videoLength, title, author, img } = props;
+	const { videoId, videoLength, title, author, img, isLiked } = props;
 	const { onSliderChange, likeVideo, dislikeVideo } = props;
 
 	const containerStyle = {
@@ -20,6 +20,7 @@ const VideoPlayer = (props) => {
 		position: 'absolute',
 		right: '11px'
 	};
+	console.log('rerendering the video player');
 
 	return (
 		<div style={containerStyle}>
@@ -34,7 +35,8 @@ const VideoPlayer = (props) => {
 					author={author}
 					img={img}
 					likeVideo={likeVideo}
-					dislikeVideo={dislikeVideo} />
+					dislikeVideo={dislikeVideo}
+					isLiked={isLiked} />
 			</div>
 		</div>
 	);

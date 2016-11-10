@@ -14,7 +14,8 @@ const mapStateToProps = (state) => {
 		videoLength: state.currentVideo.videoLength,
 		title: state.currentVideo.title,
 		author: state.currentVideo.author,
-		img: state.currentVideo.img
+		img: state.currentVideo.img,
+		isLiked: state.favorites.filter(favorite => favorite.id === state.currentVideo.id).length > 0
 	};
 };
 
