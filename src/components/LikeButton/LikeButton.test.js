@@ -11,7 +11,8 @@ describe('LikeButton', () => {
 				title="VideoTitle"
 				author="VideoAuthor"
 				likeVideo={() => {}}
-				dislikeVideo={() => {}} />
+				dislikeVideo={() => {}}
+				isLiked={false} />
 		);
 		expect(wrapper.text()).toEqual('♥');
 	});
@@ -24,7 +25,8 @@ describe('LikeButton', () => {
 				title="VideoTitle"
 				author="VideoAuthor"
 				likeVideo={() => {}}
-				dislikeVideo={() => {}} />
+				dislikeVideo={() => {}}
+				isLiked={false} />
 		);
 		expect(wrapper.state().liked).toEqual(false);
 
@@ -45,7 +47,8 @@ describe('LikeButton', () => {
 				title="VideoTitle"
 				author="VideoAuthor"
 				likeVideo={() => {}}
-				dislikeVideo={cb} />
+				dislikeVideo={cb}
+				isLiked={false} />
 		);
 
 		wrapper.simulate('click');
@@ -66,7 +69,8 @@ describe('LikeButton', () => {
 				title="VideoTitle"
 				author="VideoAuthor"
 				likeVideo={cb}
-				dislikeVideo={() => {}} />
+				dislikeVideo={() => {}}
+				isLiked={false} />
 		);
 
 		wrapper.simulate('click');
@@ -83,7 +87,8 @@ describe('LikeButton', () => {
 				title="VideoTitle"
 				author="VideoAuthor"
 				likeVideo={cb}
-				dislikeVideo={cb} />
+				dislikeVideo={cb}
+				isLiked={false} />
 		);
 
 		wrapper.simulate('click');

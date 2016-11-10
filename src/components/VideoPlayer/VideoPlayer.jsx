@@ -1,11 +1,10 @@
 import React, { PropTypes } from 'react';
 import Video from '../Video/Video';
 import TimeSlider from '../TimeSlider/TimeSlider';
-import LikeButton from '../LikeButton/LikeButton';
+import LikeButtonContainer from '../../containers/LikeButtonContainer';
 
 const VideoPlayer = (props) => {
-	const { videoId, videoLength, title, author, img } = props;
-	const { onSliderChange, likeVideo, dislikeVideo } = props;
+	const { videoLength, onSliderChange } = props;
 
 	const containerStyle = {
 		backgroundColor: 'white',
@@ -23,32 +22,20 @@ const VideoPlayer = (props) => {
 
 	return (
 		<div style={containerStyle}>
-			<Video videoId={videoId} />
+			<Video />
 			<TimeSlider
 				videoLength={videoLength}
 				onSliderChange={onSliderChange} />
 			<div style={likeButtonStyle}>
-				<LikeButton
-					id={videoId}
-					title={title}
-					author={author}
-					img={img}
-					likeVideo={likeVideo}
-					dislikeVideo={dislikeVideo} />
+				<LikeButtonContainer />
 			</div>
 		</div>
 	);
 };
 
 VideoPlayer.propTypes = {
-	videoId: PropTypes.string.isRequired,
 	videoLength: PropTypes.number.isRequired,
-	title: PropTypes.string.isRequired,
-	author: PropTypes.string.isRequired,
-	img: PropTypes.string.isRequired,
-	onSliderChange: PropTypes.func.isRequired,
-	likeVideo: PropTypes.func.isRequired,
-	dislikeVideo: PropTypes.func.isRequired
+	onSliderChange: PropTypes.func.isRequired
 };
 
 export default VideoPlayer;

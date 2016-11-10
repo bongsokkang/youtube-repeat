@@ -1,20 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-	addVideoLength,
-	addFavorites,
-	removeFavorite
-} from '../actions/Actions';
+import { addVideoLength } from '../actions/Actions';
 import YoutubePlayer from '../utility/YoutubePlayer';
 import VideoPlayer from '../components/VideoPlayer/VideoPlayer';
 
 const mapStateToProps = (state) => {
 	return {
 		videoId: state.currentVideo.id,
-		videoLength: state.currentVideo.videoLength,
-		title: state.currentVideo.title,
-		author: state.currentVideo.author,
-		img: state.currentVideo.img
+		videoLength: state.currentVideo.videoLength
 	};
 };
 
@@ -25,12 +18,6 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		onVideoLoad: (videoLength) => {
 			dispatch(addVideoLength(videoLength));
-		},
-		likeVideo: (video) => {
-			dispatch(addFavorites(video));
-		},
-		dislikeVideo: (videoId) => {
-			dispatch(removeFavorite(videoId));
 		}
 	};
 };

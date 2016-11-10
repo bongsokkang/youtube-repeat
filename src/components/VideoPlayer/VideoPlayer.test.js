@@ -8,18 +8,12 @@ describe('VideoPlayer', () => {
 	it('should render a Video component', () => {
 		const wrapper = shallow(
 			<VideoPlayer
-				videoId="abc"
 				videoLength={123456}
-				onSliderChange={() => {}}
-				title="title"
-				author="author"
-				img="img"
-				likeVideo={() => {}}
-				dislikeVideo={() => {}} />
+				onSliderChange={() => {}} />
 		);
 
 		const video = (
-			<Video videoId="abc" />
+			<Video />
 		);
 
 		expect(wrapper.contains(video)).toEqual(true);
@@ -29,14 +23,8 @@ describe('VideoPlayer', () => {
 		const cb = () => {};
 		const wrapper = shallow(
 			<VideoPlayer
-				videoId="abc"
 				videoLength={123456}
-				onSliderChange={cb}
-				title="title"
-				author="author"
-				img="img"
-				likeVideo={() => {}}
-				dislikeVideo={() => {}} />
+				onSliderChange={cb} />
 		);
 
 		const slider = (
@@ -46,21 +34,5 @@ describe('VideoPlayer', () => {
 		);
 
 		expect(wrapper.contains(slider)).toEqual(true);
-	});
-
-	it('should render a LikeButton', () => {
-		const wrapper = shallow(
-			<VideoPlayer
-				videoId="abc"
-				videoLength={123456}
-				onSliderChange={() => {}}
-				title="title"
-				author="author"
-				img="img"
-				likeVideo={() => {}}
-				dislikeVideo={() => {}} />
-		);
-
-		expect(wrapper.find('LikeButton').length).toEqual(1);
 	});
 });

@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
-const Video = ({ videoId }) => {
+const Video = () => {
 	const containerStyle = {
 		height: '390px',
 		width: '640px'
@@ -11,14 +11,6 @@ const Video = ({ videoId }) => {
 			<div id="player"></div>
 		</div>
 	);
-};
-
-Video.propTypes = {
-	videoId: PropTypes.string.isRequired
-};
-
-Video.defaultProps = {
-	videoId: ''
 };
 
 export default Video;
